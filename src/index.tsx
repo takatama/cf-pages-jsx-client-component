@@ -16,7 +16,11 @@ app.get('/', (c) => {
       </head>
       <body>
         <div id="root"></div>
-        <script type="module" src="/src/client.tsx"></script>
+        {import.meta.env.PROD ? (
+          <script type="module" src="/static/client.js" />
+        ) : (
+          <script type="module" src="/src/client.tsx" />
+        )}
       </body>
     </html>
   )
