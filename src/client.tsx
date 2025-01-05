@@ -1,10 +1,10 @@
-import { createRoot } from 'hono/jsx/dom/client'
 import { useState } from 'hono/jsx/dom'
+import { createRoot } from 'hono/jsx/dom/client'
 
 function App() {
   return (
     <>
-      <h1>Hello, Hono with React!</h1>
+      <h1>Hello, Hono with JSX!</h1>
       <h2>Example of useState()</h2>
       <Counter />
       <h2>Example of API fetch()</h2>
@@ -15,7 +15,12 @@ function App() {
 
 function Counter() {
   const [count, setCount] = useState(0)
-  return <button onClick={() => setCount(count + 1)}>You clicked me {count} times</button>
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+    </div>
+  )
 }
 
 const ClockButton = () => {
