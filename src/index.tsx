@@ -9,7 +9,10 @@ const Layout: FC = (props) => {
       <head>
         <link href="/static/style.css" rel="stylesheet" />
       </head>
-      <body>{props.children}</body>
+      <body>
+        <div id="root"></div>
+        <script type="module" src="/src/main.tsx"></script>
+      </body>
     </html>
   )
 }
