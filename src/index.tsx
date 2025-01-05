@@ -2,6 +2,12 @@ import { Hono } from 'hono'
 
 const app = new Hono()
 
+app.get('/api/clock', (c) => {
+  return c.json({
+    time: new Date().toLocaleTimeString()
+  })
+})
+
 app.get('/', (c) => {
   return c.html(
     <html>
@@ -10,7 +16,7 @@ app.get('/', (c) => {
       </head>
       <body>
         <div id="root"></div>
-        <script type="module" src="/src/main.tsx"></script>
+        <script type="module" src="/src/client.tsx"></script>
       </body>
     </html>
   )

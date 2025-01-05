@@ -1,5 +1,5 @@
-import { createRoot } from 'react-dom/client'
-import { useState } from 'react'
+import { createRoot } from 'hono/jsx/dom/client'
+import { useState } from 'hono/jsx/dom'
 
 function App() {
   return (
