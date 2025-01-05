@@ -1,12 +1,37 @@
 import { Hono } from 'hono'
-import { renderer } from './renderer'
+import type { FC } from 'hono/jsx'
 
 const app = new Hono()
 
-app.use(renderer)
+const Layout: FC = (props) => {
+  return (
+    <html>
+      <head>
+        <link href="/static/style.css" rel="stylesheet" />
+      </head>
+      <body>{props.children}</body>
+    </html>
+  )
+}
+
+const Top: FC<{ messages: string[] }> = (props: {
+  messages: string[]
+}) => {
+  return (
+    <Layout>
+      <h1>Hello Hono!</h1>
+      <ul>
+        {props.messages.map((message) => {
+          return <li>{message}!!</li>
+        })}
+      </ul>
+    </Layout>
+  )
+}
 
 app.get('/', (c) => {
-  return c.render(<h1>Hello!</h1>)
+  const messages = ['Good Morning', 'Good Evening', 'Good Night']
+  return c.html(<Top messages={messages} />)
 })
 
 export default app
